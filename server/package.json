@@ -1,0 +1,19 @@
+{
+  "name": "client-registering-app",
+  "version": "1.0.0",
+  "description": "App for registering clients",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "app",
+    "first",
+    "clients"
+  ],
+  "author": "Daniel M",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

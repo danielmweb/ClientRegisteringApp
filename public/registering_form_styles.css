@@ -1,0 +1,377 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    border-radius: 3px;
+}
+
+body {
+    height: 100%;
+}
+
+:root {
+    --input-light-bg: #999999;
+    --btn-dark-bg: #222222;
+    --bg-grey-medium: #333333;
+    --bg-grey-light: #444444;
+}
+.client-block {
+    width: 100%;
+    background-color: #444444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-column,
+.right-column {
+    float: left;
+    height: 100%;
+    padding: 14px;
+}
+
+.client-block .container {
+    background-color: #333333;
+    opacity: 0%;
+    color: #cccccc;
+}
+
+.fade-in-animation {
+    opacity: 0%;
+    animation: fade-in-container 500ms forwards;
+    animation-delay: 250ms;
+}
+
+@keyframes fade-in-container {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+/*======== Form part =============*/
+
+.form-part,
+.btn-part,
+.top-bar,
+.client-viewer {
+    background-color: #444444;
+    box-shadow: inset 0px 0px 5px #333333;
+}
+
+.form-part label {
+    font-size: 16px;
+    user-select: none;
+}
+
+.form-part {
+    height: 70%;
+    padding: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    overflow: auto;
+}
+
+.form-part input {
+    text-decoration: none;
+    background-color: var(--input-light-bg);
+    width: 100%;
+    border: none;
+    box-shadow: inset 0px 0px 5px #444444;
+    outline: none;
+    padding: 5px;
+    margin-top: 5px;
+    font-weight: 600;
+    color: #222222;
+    /* border: 5px solid red; */
+}
+
+.client-img-container {
+    padding: 15px;
+    margin-top: 5px;
+    background-color: var(--input-light-bg);
+    box-shadow: inset 0px 0px 5px #444444;
+    width: min-content;
+}
+
+.client-img {
+    height: 64px;
+    width: 64px;
+}
+
+.shaking-field {
+    animation-name: shake-field;
+    animation-duration: 200ms;
+    position: relative;
+}
+
+@keyframes shake-field {
+    0% {
+        top: 0px;
+        left: 0px;
+    }
+
+    33.33% {
+        top: 0px;
+        left: -20px;
+    }
+
+    66.66% {
+        top: 0px;
+        left: 20px;
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+    }
+}
+
+/*========= btn part =====*/
+
+.btn-part {
+    height: 29%;
+    margin-top: 1%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-container {
+    height: 30%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--btn-dark-bg);
+    transition-property: opacity;
+    transition-duration: 250ms;
+    opacity: 70%;
+    user-select: none;
+    cursor: pointer;
+}
+
+#btnAdd {
+    margin-bottom: 10px;
+}
+
+.btn-container:hover {
+    opacity: 100%;
+}
+
+.green-transition {
+    animation-name: turn-green;
+    animation-duration: 500ms;
+}
+
+@keyframes turn-green {
+    0% {
+        background-color: var(--btn-dark-bg);
+    }
+    50% {
+        background-color: darkgreen;
+    }
+
+    100% {
+        background-color: var(--btn-dark-bg);
+    }
+}
+
+.red-transition {
+    animation-name: turn-red;
+    animation-duration: 500ms;
+}
+
+@keyframes turn-red {
+    0% {
+        background-color: var(--btn-dark-bg);
+    }
+    50% {
+        background-color: darkred;
+    }
+
+    100% {
+        background-color: var(--btn-dark-bg);
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .container {
+        height: 70%;
+        width: 700px;
+        padding: 24px;
+    }
+
+    .form-part,
+    .btn-part {
+        display: flex;
+    }
+
+    .left-column {
+        width: 54%;
+        margin-right: 0.2%;
+    }
+
+    .right-column {
+        width: 45%;
+    }
+    .toggler {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 799px) {
+    .container {
+        height: 100%;
+    }
+    .right-column {
+        width: 85%;
+        margin-left: 15%;
+        padding-right: 10px;
+        padding-left: 0px;
+        height: 100%;
+    }
+
+    .left-column {
+        width: 15%;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        padding: 2px;
+        background-color: #333333;
+        /* transition-property: width;
+        transition-duration: 100ms; */
+    }
+
+    .form-part,
+    .btn-part {
+        display: none;
+    }
+    .form-part {
+        padding: 10px;
+        height: 60%;
+    }
+    .btn-part > * {
+        height: 30px;
+        height: 30%;
+    }
+    .toggler {
+        background-color: #444444;
+        height: 10%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon-container {
+        width: 42px;
+        height: 42px;
+        transition-property: transform;
+        transition-duration: 200ms;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .horizontal-icon {
+        transform: rotate(-90deg);
+    }
+}
+
+.top-bar {
+    height: 10%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: 8px;
+}
+
+.search-bar {
+    padding-left: 5px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    background-color: var(--input-light-bg);
+    border: none;
+    font-weight: 600;
+    color: #222222;
+    box-shadow: inset 0px 0px 5px #444444;
+    outline: none;
+}
+
+.client-viewer {
+    height: 89%;
+    margin-top: 1%;
+    padding: 14px;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+.client {
+    background-color: #333333;
+    font-weight: 600;
+    padding: 10px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.selected-card {
+    background-color: #cccccc;
+    color: #333333;
+}
+
+#credits {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    font-size: 15px;
+    color: #cccccc;
+    padding: 14px;
+    background-color: #222222;
+    width: 80px;
+    height: 50px;
+    transition-duration: 200ms;
+    transition-property: width, height;
+}
+
+#credits:hover {
+    width: 200px;
+    height: 100px;
+}
+
+.credit {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#credits > p {
+    width: 100%;
+    text-align: center;
+}
+
+.credit,
+#credits hr {
+    display: none;
+    color: #cccccc;
+}
+
+.credit a {
+    text-decoration: none;
+    color: aliceblue;
+    background-color: #444444;
+    padding: 2px;
+}
+
+#credits:hover .credit,
+#credits:hover hr {
+    display: block;
+}

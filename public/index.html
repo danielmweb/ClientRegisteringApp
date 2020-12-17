@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="registering_form_styles.css" />
+        <link rel="stylesheet" href="img_upload_styles.css" />
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"
+            integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA=="
+            crossorigin="anonymous"
+        ></script>
+        <link
+            rel="shortcut icon"
+            href="icons/person-black-18dp.svg"
+            type="image/x-icon"
+        />
+        <title>Client Registration</title>
+    </head>
+    <body>
+        <div class="client-block">
+            <div class="container fade-in-animation">
+                <div class="left-column">
+                    <div class="toggler">
+                        <div class="icon-container">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                enable-background="new 0 0 24 24"
+                                viewBox="0 0 24 24"
+                                fill="black"
+                                id="toggler-icon"
+                            >
+                                <rect fill="none" height="24" width="24" />
+                                <path
+                                    d="M21,8H3V4h18V8z M21,10H3v4h18V10z M21,16H3v4h18V16z"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="form-part">
+                        <div class="name-container">
+                            <label for="name-field">Nome do cliente</label>
+                            <input
+                                id="name-field"
+                                type="text"
+                                placeholder="ex: Daniel"
+                            />
+                        </div>
+                        <div class="sex-container">
+                            <label for="sex-field">Sexo do cliente</label>
+                            <input
+                                id="sex-field"
+                                type="text"
+                                placeholder="ex: feminino"
+                            />
+                        </div>
+                        <div class="age-container">
+                            <label for="age-field">Idade do cliente</label>
+                            <input
+                                id="age-field"
+                                type="text"
+                                placeholder="digite um número"
+                            />
+                        </div>
+                        <div class="nat-container">
+                            <label for="nat-field"
+                                >Nacionalidade do cliente</label
+                            >
+                            <input
+                                id="nat-field"
+                                type="text"
+                                placeholder="ex: brasileiro"
+                            />
+                        </div>
+
+                        <div class="img-container">
+                            <div>Foto do cliente (opcional)</div>
+                            <div class="client-img-container">
+                                <img
+                                    id="client-img"
+                                    src="icons/person-black-18dp.svg"
+                                    width="64px"
+                                    height="64px"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-part">
+                        <div id="btnAdd" class="btn-container">
+                            <div class="btn-prompt">Adicionar Cliente</div>
+                        </div>
+                        <div id="btnRemove" class="btn-container">
+                            <div>Remover Cliente</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="top-bar">
+                        <input
+                            type="search"
+                            class="search-bar"
+                            placeholder="Procurando por algo?"
+                        />
+                    </div>
+                    <div class="client-viewer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="img-block">
+            <div class="container fade-in-animation">
+                <div class="columns-container">
+                    <div class="file-column-container">
+                        <div class="prompt">
+                            Arraste e solte um arquivo de imagem
+                        </div>
+                        <div class="file-area">
+                            <div
+                                class="drop-area inset-dark-border"
+                                ondrop="dropHandler(event)"
+                                ondragover="dragOverHandler(event)"
+                                ondragenter="dragEnterHandler(event)"
+                                ondragleave="dragLeaveHandler(event)"
+                            >
+                                <img
+                                    id="add-file"
+                                    class="plus-icon button"
+                                    src="icons/plus-sign.svg"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="search-file">
+                                <form
+                                    action=""
+                                    name="form-file"
+                                    style="
+                                        display: block;
+                                        width: 100%;
+                                        height: 100%;
+                                    "
+                                >
+                                    <input
+                                        type="file"
+                                        name="input-file"
+                                        id="input-file"
+                                        style="
+                                            z-index: -1;
+                                            visibility: hidden;
+                                            width: 0px;
+                                            height: 0px;
+                                        "
+                                    />
+                                    <label
+                                        for="input-file"
+                                        style="
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            width: 100%;
+                                            height: 100%;
+                                            text-align: center;
+                                            float: left;
+                                        "
+                                        class="button"
+                                        ><p>Procurar Arquivo...</p></label
+                                    >
+                                </form>
+                            </div>
+                        </div>
+                        <div class="btn-use-file button">
+                            <p>Usar esta!</p>
+                        </div>
+                    </div>
+
+                    <div class="cam-column-container">
+                        <div class="prompt">Tire uma foto com a webcam</div>
+                        <div class="img-area inset-dark-border">
+                            <div class="img">
+                                <div id="cam">
+                                    <img
+                                        class="plus-icon button"
+                                        src="icons/plus-sign.svg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                            <div class="footer">
+                                <div id="take-pic" class="button">
+                                    <p>Tirar foto</p>
+                                </div>
+                                <div id="camOnOff" class="button">
+                                    <p>Ligar WebCam</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-use-img button">Usar esta!</div>
+                    </div>
+                </div>
+
+                <div class="btn-done-container button">
+                    <div class="btn-done">
+                        <p>Pronto!</p>
+                    </div>
+                </div>
+                <div class="btn-cancel-container button">
+                    <div class="btn-cancel">
+                        <p>Cancelar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="credits">
+            <p>Créditos</p>
+            <hr />
+            <div class="credit">
+                Ícones retirados do site
+                <a
+                    href="https://material.io/resources/icons/?search=sear&icon=search&style=baseline"
+                    target="_blank"
+                    >Material Design</a
+                >
+            </div>
+        </div>
+        <script src="layout.js"></script>
+        <script src="index.js"></script>
+        <script src="webcam_manager.js"></script>
+        <script src="drag_drop_manager.js"></script>
+        <script src="image_block_manager.js"></script>
+    </body>
+</html>
